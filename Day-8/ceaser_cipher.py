@@ -28,3 +28,5 @@ while next_round:
     user_continue = input("Type 'yes' to continue or 'no' to stop\n").lower()
     if user_continue == 'no':
         next_round = False
+        print("Goodbye!")
+
