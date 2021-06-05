@@ -1,4 +1,5 @@
 import random
+from blacjack_art import logo
 
 
 def deal_card():
@@ -24,6 +25,7 @@ for _ in range(2):
     player_cards.append(deal_card())
     computer_cards.append(deal_card())
 
+print(logo)
 print(f"Your cards: {player_cards}")
 print(f"Computer's first card: {computer_cards[0]}")
 
