@@ -14,9 +14,13 @@ while True:
     elif user_option == 'report':
         my_coffee_maker.report()
         my_money.report()
-    elif not my_menu.find_drink(user_option):
-        print(f"We don't have {user_option}. Please order something from the menu!")
-    elif my_coffee_maker.is_resource_sufficient(my_menu.find_drink(user_option)):
+    # elif not my_menu.find_drink(user_option):
+    #     print(f"We don't have {user_option}. Please order something from the menu!")
+    # elif my_coffee_maker.is_resource_sufficient(my_menu.find_drink(user_option)):
+    #     chosen_beverage = my_menu.find_drink(user_option)
+    #     if my_money.make_payment(chosen_beverage.cost):
+    #         my_coffee_maker.make_coffee(chosen_beverage)
+    else:
         chosen_beverage = my_menu.find_drink(user_option)
-        if my_money.make_payment(chosen_beverage.cost):
+        if my_coffee_maker.is_resource_sufficient(chosen_beverage) and my_money.make_payment(chosen_beverage.cost):
             my_coffee_maker.make_coffee(chosen_beverage)
