@@ -7,6 +7,7 @@ tim = Turtle()
 tim.speed('fastest')
 tim.hideturtle()
 
+
 def get_random_color():
     """returns a random rgb tuple"""
     r = randint(0, 255)
