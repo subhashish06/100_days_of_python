@@ -29,7 +29,7 @@ class Net(Turtle):
         super().__init__()
         self.color('white')
         self.penup()
-        self.pensize(10)
+        self.pensize(3)
         self.hideturtle()
         self.goto(x=0, y=-300)
         self.setheading(90)

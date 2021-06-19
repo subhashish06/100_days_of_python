@@ -9,6 +9,7 @@ class Ball(Turtle):
         self.penup()
         self.setheading(220)
         self.is_moving = True
+        self.ball_speed = 0.1
 
     def move(self):
         if 0 < self.heading() < 90:
@@ -37,3 +38,6 @@ class Ball(Turtle):
         if new_heading < 0:
             new_heading += 360
         self.setheading(new_heading)
+
+    def speed_up(self):
+        self.ball_speed *= 0.9
