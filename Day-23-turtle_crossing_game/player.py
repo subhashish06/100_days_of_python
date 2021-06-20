@@ -1,7 +1,6 @@
 from turtle import Turtle
 
 STARTING_POSITION = (0, -280)
-FINISHING_POSITION_Y = 280
 PACE = 10
 
 
