@@ -35,9 +35,9 @@ screen.onkeypress(fun=high_score.reset_high_score, key='r')
 is_game_over = False
 while not is_game_over:
     score_board.display_score()
-    screen.update()
     time.sleep(DELAY)
     snake.move()
+    screen.update()
     # Detect collision with food and move the food to new location
     if snake.head.distance(food) < 15:
         food.change_position()
@@ -53,7 +53,6 @@ while not is_game_over:
         if snake.head.distance(segment) < 10:
             score_board.display_game_over()
             is_game_over = True
-            high_score.update_high_score(score = score_board.score)
-
+            high_score.update_high_score(score=score_board.score)
 
 screen.exitonclick()
