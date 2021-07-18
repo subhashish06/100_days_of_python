@@ -17,6 +17,6 @@ if date.weekday() == 0:
                     from_addr="subhashish.py@gmail.com",
                     to_addrs=["subhashish06@gmail.com","bananivista2017@gmail.com"],
                     msg=f"Subject:Monday Motivation\n\n"
-                        f"Hi Subhashish\n\nQuote of the Day:\n{quote_of_the_day}\n\nStay Motivated!\n\n"
+                        f"Hi,\n\nQuote of the Day:\n{quote_of_the_day}\n\nStay Motivated!\n\n"
                         f"Regards,\nSubhashish"
                     )
