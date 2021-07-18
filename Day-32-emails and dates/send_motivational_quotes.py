@@ -1,4 +1,3 @@
-import random
 from smtplib import SMTP
 from datetime import datetime
 from random import choice
