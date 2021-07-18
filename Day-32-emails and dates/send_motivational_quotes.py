@@ -7,7 +7,7 @@ date = datetime.now()
 if date.weekday() == 0:
     with open("quotes.txt") as f:
         quotes = f.readlines()
-        quote_of_the_day = random.choice(quotes)
+        quote_of_the_day = choice(quotes)
         print(quote_of_the_day)
 
     with SMTP("smtp.gmail.com") as mail:
