@@ -4,7 +4,7 @@ from food import Food
 from scoreboard import ScoreBoard, HighScore
 import time
 
-DELAY = 0.5
+DELAY = 0.8
 
 # Create a square screen as the game area
 screen = Screen()
