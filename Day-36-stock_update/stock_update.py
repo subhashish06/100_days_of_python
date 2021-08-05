@@ -3,8 +3,8 @@ import requests
 import json
 from twilio.rest import Client
 
-STOCK = "RELIANCE"
-COMPANY_NAME = "RELIANCE"
+STOCK = "INFN"
+COMPANY_NAME = "Infinera"
 
 # Get the Stock Price Movement
 
@@ -12,7 +12,7 @@ stock_api_key = os.environ.get("STOCK_AUTH_TOKEN")
 stock_url = "https://www.alphavantage.co/query"
 stock_parameters = {
     "function": "GLOBAL_QUOTE",
-    "symbol": STOCK + ".BSE",
+    "symbol": STOCK,
     "apikey": stock_api_key
 }
 
@@ -21,6 +21,8 @@ stock_response.raise_for_status()
 stock_price_details = stock_response.json()
 stock_movement = stock_price_details["Global Quote"]["10. change percent"][:4]
 print(stock_movement)
+stock_price = stock_price_details["Global Quote"]["05. price"][:-2]
+print(stock_price)
 
 # Get the News
 
@@ -46,9 +48,9 @@ account_sid = 'AC563da7de98225d587e5aea9ab11b275d'
 twilio_api_key = os.environ.get("TWILIO_AUTH_TOKEN")
 
 if float(stock_movement) > 0:
-    message_text = f'{STOCK}: 🔺{stock_movement}%\n\nHeadline : {news_title}\n\nBrief : {news_description}'
+    message_text = f'{STOCK}: {stock_price} 🔺{stock_movement}%\n\nHeadline : {news_title}\n\nBrief : {news_description}'
 else:
-    message_text = f'{STOCK}: 🔻{stock_movement}%\n\nHeadline : {news_title}\n\nBrief : {news_description}'
+    message_text = f'{STOCK}: {stock_price} 🔻{stock_movement}%\n\nHeadline : {news_title}\n\nBrief : {news_description}'
 
 client = Client(account_sid, twilio_api_key)
 message = client.messages.create(
