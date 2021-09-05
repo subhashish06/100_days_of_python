@@ -1,3 +1,9 @@
+"""
+Program: Weather Reader
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
 # with open('weather_data.csv', mode='r') as f:
 #     data = f.readlines()
 

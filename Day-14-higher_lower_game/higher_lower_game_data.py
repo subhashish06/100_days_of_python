@@ -1,4 +1,10 @@
-data = [
+"""
+Program: Higher Lower Game Data
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
+
+DATA = [
     {
         'name': 'Instagram',
         'follower_count': 346,

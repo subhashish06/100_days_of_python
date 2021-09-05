@@ -1,3 +1,9 @@
+"""
+Program: Quiz Data
+Author: Subhashish Dhar
+Date: 04/09/2021
+"""
+
 import requests
 
 parameters = {

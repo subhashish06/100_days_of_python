@@ -1,3 +1,9 @@
+"""
+Program: Quiz Main Program
+Author: Subhashish Dhar
+Date: 04/09/2021
+"""
+
 from question_model import Question
 from data import question_data
 from quiz_brain import QuizBrain

@@ -1,17 +1,24 @@
-from tkinter import *
-from tkinter import messagebox
+"""
+Program: Password Generator GUI
+Author: Subhashish Dhar
+Date: 04/09/2021
+"""
+
 import random
-import pyperclip
 import json
+from tkinter import Tk, Canvas, Label, Entry, PhotoImage, Button, END
+from tkinter import messagebox
+import pyperclip
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
-
-
 def generate():
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-               'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-               'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    """generate the password"""
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+               'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+               'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+               'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+               'W', 'X', 'Y', 'Z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
@@ -33,20 +40,18 @@ def generate():
 
 
 # ---------------------------- COPY PASSWORD ------------------------------- #
-
-
 def copy():
+    """copies the password to clipboard"""
     if password_entry.get() != '':
         pyperclip.copy(password_entry.get())
 
 
 # ---------------------------- SEARCH PASSWORD ------------------------------- #
-
-
 def search():
+    """searches the credentials in database"""
     try:
-        with open("data_file.json", "r") as f:
-            saved_data = json.load(f)
+        with open("data_file.json", "r", encoding='utf-8') as file_handler:
+            saved_data = json.load(file_handler)
     except FileNotFoundError:
         messagebox.showinfo(title="Error", message="No data file found.")
     else:
@@ -55,38 +60,40 @@ def search():
             username_searched = saved_data[search_key]['username']
             password_searched = saved_data[search_key]['password']
             messagebox.showinfo(title=search_key,
-                                message=f"Username : {username_searched}\nPassword : {password_searched}")
+                                message=f"Username : {username_searched}\n"
+                                        f"Password : {password_searched}")
         else:
             messagebox.showinfo(title="Error", message=f"No password saved for {search_key}")
 
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-
-
 def save():
+    """saves credentials to the database"""
     web = website_entry.get().title()
     user = username_entry.get()
-    pw = password_entry.get()
+    password = password_entry.get()
     new_data = {
         web: {
             "username": user,
-            "password": pw
+            "password": password
         }
     }
-    if web == '' or pw == '' or user == '':
+    if web == '' or password == '' or user == '':
         messagebox.showinfo(title='Data Missing', message="Please don't leave any entries empty")
     else:
-        is_ok = messagebox.askokcancel(title=web, message=f"Email: {user}\nPassword: {pw}\nOK to save?")
+        is_ok = messagebox.askokcancel(title=web, message=f"Email: {user}\n"
+                                                          f"Password: {password}\nOK to save?")
         if is_ok:
             try:
-                with open('data_file.json', 'r') as f:
-                    data = json.load(f)
+                with open('data_file.json', 'r', encoding='utf-8') as file_handler:
+                    data = json.load(file_handler)
             except FileNotFoundError:
-                with open('data_file.json', 'w') as f:
-                    json.dump(new_data, f, indent=4)
+                with open('data_file.json', 'w', encoding='utf-8') as file_handler:
+                    json.dump(new_data, file_handler, indent=4)
             else:
-                with open('data_file.json', 'w') as f:
+                with open('data_file.json', 'w', encoding='utf-8') as file_handler:
                     data.update(new_data)
-                    json.dump(data, f, indent=4)
+                    json.dump(data, file_handler, indent=4)
             finally:
                 website_entry.delete(0, END)
                 password_entry.delete(0, END)

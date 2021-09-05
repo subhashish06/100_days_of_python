@@ -1,3 +1,9 @@
+"""
+Program: Ping Pong Game
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
 from turtle import Screen
 from time import sleep
 from paddle import Paddle
@@ -25,8 +31,8 @@ screen.onkeypress(fun=right_paddle.move_down, key='Down')
 screen.onkeypress(fun=left_paddle.move_up, key='w')
 screen.onkeypress(fun=left_paddle.move_down, key='s')
 
-is_game_over = False
-while not is_game_over:
+GAME_OVER = False
+while not GAME_OVER:
     sleep(ball.ball_speed)
     screen.update()
     ball.move()
@@ -53,7 +59,7 @@ while not is_game_over:
         ball.bounce_off_paddle()
         ball.ball_speed = 0.1
     if right_score.score > 14 or left_score.score > 14:
-        is_game_over = True
+        GAME_OVER = True
         left_score.display_score()
         right_score.display_score()
         right_score.display_game_over()

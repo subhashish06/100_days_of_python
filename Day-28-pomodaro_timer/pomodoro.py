@@ -1,4 +1,10 @@
-from tkinter import *
+"""
+Program: Pomodoro Timer
+Author: Subhashish Dhar
+Date: 04/09/2021
+"""
+
+from tkinter import Tk, Canvas, Label, Button, PhotoImage
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -8,32 +14,33 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
-reps = 0
-timer = None
+REPS = 0
+TIMER = None
 
 # ---------------------------- TIMER RESET ------------------------------- #
 
 
 def restart_timer():
-    window.after_cancel(timer)
+    """restarts the timer"""
+    window.after_cancel(TIMER)
     timer_label.config(text="Timer", font=(FONT_NAME, 30, 'bold'), fg=GREEN)
     tick_label.config(text='')
     canvas.itemconfig(timer_text, text="00:00")
-    global reps
-    reps = 0
-
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+    global REPS
+    REPS = 0
 
 
+# ---------------------------- TIMER MECHANISM ------------------------------- #
 def start_timer():
-    global reps
-    reps += 1
-    if reps > 8:
+    """starts the timer"""
+    global REPS
+    REPS += 1
+    if REPS > 8:
         restart_timer()
-    elif reps % 2 != 0:
+    elif REPS % 2 != 0:
         timer_label.config(text='Work', font=(FONT_NAME, 30, 'bold'), fg=GREEN)
         countdown(WORK_MIN * 60)
-    elif reps < 8:
+    elif REPS < 8:
         timer_label.config(text='Break', font=(FONT_NAME, 30, 'bold'), fg=PINK)
         countdown(SHORT_BREAK_MIN * 60)
     else:
@@ -44,6 +51,9 @@ def start_timer():
 
 
 def countdown(count):
+    """
+    input : integer value of number of seconds
+    """
     time_min = count // 60
     time_sec = count % 60
     if time_sec < 10:
@@ -52,10 +62,10 @@ def countdown(count):
         time_min = f"0{time_min}"
     canvas.itemconfig(timer_text, text=f"{time_min}:{time_sec}")
     if count > 0:
-        global timer
-        timer = window.after(1000, countdown, count-1)
+        global TIMER
+        TIMER = window.after(1000, countdown, count - 1)
     else:
-        work_sessions = reps // 2
+        work_sessions = REPS // 2
         tick_label.config(text="🗸" * work_sessions)
         start_timer()
 

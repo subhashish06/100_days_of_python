@@ -1,3 +1,10 @@
+"""
+Program: Coffee Maker Module
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
+
+
 class CoffeeMaker:
     """Models the machine that makes the coffee"""
     def __init__(self):

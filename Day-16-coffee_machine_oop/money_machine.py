@@ -1,5 +1,12 @@
-class MoneyMachine:
+"""
+Program: Money Machine Module
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
 
+
+class MoneyMachine:
+    """Models the Money Machine."""
     CURRENCY = "$"
 
     COIN_VALUES = {
@@ -20,8 +27,8 @@ class MoneyMachine:
     def process_coins(self):
         """Returns the total calculated from coins inserted."""
         print("Please insert coins.")
-        for coin in self.COIN_VALUES:
-            self.money_received += int(input(f"How many {coin}?: ")) * self.COIN_VALUES[coin]
+        for coin, value in self.COIN_VALUES.items():
+            self.money_received += int(input(f"How many {coin}?: ")) * value
         return self.money_received
 
     def make_payment(self, cost):
@@ -33,7 +40,6 @@ class MoneyMachine:
             self.profit += cost
             self.money_received = 0
             return True
-        else:
-            print("Sorry that's not enough money. Money refunded.")
-            self.money_received = 0
-            return False
+        print("Sorry that's not enough money. Money refunded.")
+        self.money_received = 0
+        return False

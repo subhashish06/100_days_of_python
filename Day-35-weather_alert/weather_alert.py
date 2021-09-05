@@ -1,6 +1,12 @@
-from twilio.rest import Client
-import requests
+"""
+Program: Weather Alert
+Author: Subhashish Dhar
+Date: 04/09/2021
+"""
+
 import os
+import requests
+from twilio.rest import Client
 
 API_KEY = os.environ.get("OWM_API_KEY")
 LATITUDE = 12.971599
@@ -14,17 +20,18 @@ parameters = {
     "units": "metric"
 }
 
-account_sid = 'AC563da7de98225d587e5aea9ab11b275d'
+ACCOUNT_SID = 'AC563da7de98225d587e5aea9ab11b275d'
 auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
 
-response = requests.get(url="https://api.openweathermap.org/data/2.5/onecall", params=parameters)
+response = requests.get(url="https://api.openweathermap.org/data/2.5/onecall",
+                        params=parameters)
 response.raise_for_status()
 weather_data = response.json()
 
 temperature = weather_data["current"]["temp"]
 weather = weather_data["current"]["weather"][0]["description"]
 
-client = Client(account_sid, auth_token)
+client = Client(ACCOUNT_SID, auth_token)
 # WhatsAPP
 message = client.messages.create(
         from_='whatsapp:+14155238886',

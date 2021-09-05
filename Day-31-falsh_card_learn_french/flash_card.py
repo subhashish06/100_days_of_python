@@ -1,49 +1,59 @@
-from tkinter import *
-import pandas as pd
+"""
+Program: Flash Cards to learn French
+Author: Subhashish Dhar
+Date: 04/09/2021
+"""
+
+from tkinter import Button, Tk, Canvas, PhotoImage
 from random import randint
-import time
+import pandas as pd
+
 BACKGROUND_COLOR = "#B1DDC6"
 
 try:
     data_df = pd.read_csv("./data/words_to_learn.csv")
-    data_dict = data_df.to_dict(orient='records')
+    DATA = data_df.to_dict(orient='records')
 except FileNotFoundError:
     data_df = pd.read_csv("./data/french_words.csv")
-    data_dict = data_df.to_dict(orient='records')
+    DATA = data_df.to_dict(orient='records')
 finally:
-    number_of_words = 100
+    WORDS_COUNT = 100
 
 
 # ---------------------------- FLIP CARD ------------------------------- #
 def flip_card():
+    """flips the card"""
     canvas.itemconfig(image, image=back_image)
     canvas.itemconfig(language, text='English', fill='white')
-    canvas.itemconfig(word, text=chosen_word['English'], fill='white')
+    canvas.itemconfig(word, text=CHOSEN_WORD['English'], fill='white')
 
 
 # ---------------------------- REMOVE CARD ------------------------------- #
 def remove_card():
-    global data_dict, number_of_words
-    data_dict.remove(chosen_word)
-    number_of_words -= 1
-    new_data = pd.DataFrame(data_dict)
+    """removes the word from the 'to learn' dictionary"""
+    global DATA, WORDS_COUNT
+    DATA.remove(CHOSEN_WORD)
+    WORDS_COUNT -= 1
+    new_data = pd.DataFrame(DATA)
     new_data.to_csv("./data/words_to_learn.csv", index=False)
 
 
 # ---------------------------- CREATE NEW FLASH CARD ------------------------------- #
 def draw_new_card():
-    global chosen_word, flip_timer, random_word_index
-    window.after_cancel(flip_timer)
-    random_word_index = randint(0, number_of_words)
+    """draws new card"""
+    global CHOSEN_WORD, FLIP_TIMER, INDEX
+    window.after_cancel(FLIP_TIMER)
+    INDEX = randint(0, WORDS_COUNT)
     canvas.itemconfig(image, image=front_image)
-    chosen_word = data_dict[random_word_index]
+    CHOSEN_WORD = DATA[INDEX]
     canvas.itemconfig(language, text='French', fill='black')
-    canvas.itemconfig(word, text=chosen_word['French'], fill='black')
-    flip_timer = window.after(3000, flip_card)
+    canvas.itemconfig(word, text=CHOSEN_WORD['French'], fill='black')
+    FLIP_TIMER = window.after(3000, flip_card)
 
 
 # ---------------------------- FLIP CARD ------------------------------- #
 def tick_pressed():
+    """action function : clicking tick"""
     remove_card()
     draw_new_card()
 
@@ -53,7 +63,7 @@ window = Tk()
 window.title("Flashy")
 window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
-flip_timer = window.after(3000, func=flip_card)
+FLIP_TIMER = window.after(3000, func=flip_card)
 
 # Declare all the image objects
 front_image = PhotoImage(file="./images/card_front.png")
@@ -65,9 +75,9 @@ cross_image = PhotoImage(file="./images/wrong.png")
 canvas = Canvas(width=800, height=526, bg=BACKGROUND_COLOR, highlightthickness=0)
 image = canvas.create_image(400, 263, image=front_image)
 language = canvas.create_text(400, 150, text='French', font=("Ariel", 40, "italic"))
-random_word_index = randint(0, 100)
-chosen_word = data_dict[random_word_index]
-word = canvas.create_text(400, 263, text=chosen_word['French'], font=("Ariel", 60, "bold"))
+INDEX = randint(0, 100)
+CHOSEN_WORD = DATA[INDEX]
+word = canvas.create_text(400, 263, text=CHOSEN_WORD['French'], font=("Ariel", 60, "bold"))
 canvas.grid(row=0, column=0, columnspan=2)
 
 # Create the buttons

@@ -1,10 +1,14 @@
-# This file will need to use the DataManager, FlightSearch, FlightData, NotificationManager classes
-# to achieve the program requirements.
+"""
+Program: Flight Club
+Author: Subhashish Dhar
+Date: 05/09/2021
+"""
+
+from datetime import datetime, timedelta
 from data_manager import DataManager, PRICES_SHEET_URL
 from flight_search import FlightSearch
 from flight_data import FlightData
 from notification_manager import NotificationManager
-from datetime import datetime, timedelta
 
 START_CITY_CODE = "BLR"
 
@@ -48,9 +52,11 @@ for entry in prices_data['prices']:
     arrival_airport = flight_data.get_destination_airport()
     outbound_date = flight_data.get_start_date()
     inbound_date = flight_data.get_return_date()
-    if price != "No Data" and entry['lowestPrice'] != 'No Data' and int(price) < entry['lowestPrice']:
+    if price != "No Data" and entry['lowestPrice'] != 'No Data' \
+            and int(price) < entry['lowestPrice']:
         alert_text = f"Low Price Alert! Only {price} to fly from " \
-                     f"{departure_city}-{departure_airport} to {arrival_city}-{arrival_airport}," \
+                     f"{departure_city}-{departure_airport} to " \
+                     f"{arrival_city}-{arrival_airport}," \
                      f"from {outbound_date} to {inbound_date}."
         alert.send_message(alert_text)
         msg = f"Subject:Flight Club\n\nHi,\n\n{alert_text}\n\nRegards,\nSubhashish"

@@ -1,3 +1,9 @@
+"""
+Program: Squirrel Analyzer
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
 import pandas as pd
 
 data = pd.read_csv('Squirrel_Data.csv')

@@ -1,5 +1,11 @@
-import requests
+"""
+Program: Sunrise Time
+Author: Subhashish Dhar
+Date: 04/09/2021
+"""
+
 import datetime as dt
+import requests
 
 MY_LATITUDE = 12.971599
 MY_LONGITUDE = 77.594566
