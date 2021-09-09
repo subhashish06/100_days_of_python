@@ -1,4 +1,11 @@
-logo = """
+"""
+Program: Blackjack Game Art
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
+# pylint: disable=anomalous-backslash-in-string
+
+LOGO = """
 .------.            _     _            _    _            _    
 |A_  _ |.          | |   | |          | |  (_)          | |   
 |( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __

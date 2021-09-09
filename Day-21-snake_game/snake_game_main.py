@@ -1,8 +1,14 @@
+"""
+Program: Snake Game
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
+import time
 from turtle import Screen
 from snake import Snake
 from food import Food
 from scoreboard import ScoreBoard, HighScore
-import time
 
 DELAY = 0.8
 
@@ -27,13 +33,13 @@ high_score = HighScore()
 screen.listen()
 screen.onkeypress(fun=snake.left, key='Left')
 screen.onkeypress(fun=snake.right, key='Right')
-screen.onkeypress(fun=snake.down, key='Down')
-screen.onkeypress(fun=snake.up, key='Up')
+screen.onkeypress(fun=snake.turn_down, key='Down')
+screen.onkeypress(fun=snake.turn_up, key='Up')
 screen.onkeypress(fun=high_score.reset_high_score, key='r')
 
 # Move the snake
-is_game_over = False
-while not is_game_over:
+GAME_OVER = False
+while not GAME_OVER:
     score_board.display_score()
     time.sleep(DELAY)
     snake.move()
@@ -44,15 +50,16 @@ while not is_game_over:
         score_board.increase_score()
         snake.extend()
     # Detect collision with wall
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 \
+            or snake.head.ycor() > 280 or snake.head.ycor() < -280:
         score_board.display_game_over()
-        is_game_over = True
+        GAME_OVER = True
         high_score.update_high_score(score=score_board.score)
     # Detect collision with itself
     for segment in snake.snake_segments[1:]:
         if snake.head.distance(segment) < 10:
             score_board.display_game_over()
-            is_game_over = True
+            GAME_OVER = True
             high_score.update_high_score(score=score_board.score)
 
 screen.exitonclick()

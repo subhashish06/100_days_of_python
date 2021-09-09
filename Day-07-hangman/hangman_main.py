@@ -1,19 +1,23 @@
-#Step 5
+"""
+Program: Hangman Game
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
 
 import random
-from hangman_art import logo, stages
-from hangman_words import word_list, alphabets
+from hangman_art import LOGO, STAGES
+from hangman_words import WORD_LIST, ALPHABETS
 
-chosen_word = random.choice(word_list)
-word_length = len(chosen_word)
+CHOSEN_WORD = random.choice(WORD_LIST)
+word_length = len(CHOSEN_WORD)
 
-end_of_game = False
-lives = 6
+END_OF_GAME = False
+LIVES = 6
 
-print(logo)
+print(LOGO)
 
 # Testing code
-print(f'Pssst, the solution is {chosen_word}.')
+print(f'Pssst, the solution is {CHOSEN_WORD}.')
 
 # Create blanks
 display = []
@@ -23,37 +27,38 @@ for _ in range(word_length):
 # Create a list of all the guessed letters
 guessed_letters = []
 
-while not end_of_game:
+while not END_OF_GAME:
     guess = input("Guess a letter: ").lower()
 
     if guess in guessed_letters:
-      print(f"You have already guessed the letter {guess}. Try again.")
+        print(f"You have already guessed the letter {guess}. Try again.")
 
-    #Check guessed letter
+    # Check guessed letter
     for position in range(word_length):
-        letter = chosen_word[position]
-        # print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
+        letter = CHOSEN_WORD[position]
+        # print(f"Current position: {position}\n
+        #   Current letter: {letter}\n Guessed letter: {guess}")
         if letter == guess:
             display[position] = letter
 
-    #Check if user is wrong.
-    if guess not in alphabets:
+    # Check if user is wrong.
+    if guess not in ALPHABETS:
         print("Choose a proper alphabet!")
-    elif guess not in chosen_word and guess not in guessed_letters:
+    elif guess not in CHOSEN_WORD and guess not in guessed_letters:
         print(f"The letter {guess} is not in the word. You lose a life.")
-        lives -= 1
-        if lives == 0:
-            end_of_game = True
+        LIVES -= 1
+        if LIVES == 0:
+            END_OF_GAME = True
             print("You lose.")
         guessed_letters.append(guess)
     else:
         guessed_letters.append(guess)
 
-    #Join all the elements in the list and turn it into a String.
+    # Join all the elements in the list and turn it into a String.
     print(f"{' '.join(display)}")
-    print(stages[lives])
+    print(STAGES[LIVES])
 
-    #Check if user has got all letters.
+    # Check if user has got all letters.
     if "_" not in display:
-        end_of_game = True
+        END_OF_GAME = True
         print("You win.")

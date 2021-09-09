@@ -1,15 +1,21 @@
-from auction_art import logo
-print(logo)
+"""
+Program: Auction
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
 
-should_continue = True
+from auction_art import LOGO
+print(LOGO)
+
+SHOULD_CONTINUE = True
 bidders = {}
-while should_continue:
+while SHOULD_CONTINUE:
     name = input("What is your name?: ")
     bid = int(input("What is your bid?: $"))
     bidders[name] = bid
     more_bidders = input("Are there any other bidders? Type 'yes or 'no'.\n").lower()
     if more_bidders == 'no':
-        should_continue = False
+        SHOULD_CONTINUE = False
 
 # Code to get the key,value pair from a dictionary with highest value.
 highest_bidder_tuple = max(bidders.items(), key=lambda i: i[1])

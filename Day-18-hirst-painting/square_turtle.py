@@ -1,3 +1,9 @@
+"""
+Program: Draw Square
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
 # Look for colors : https://cs111.wellesley.edu/labs/lab01/colors
 
 from turtle import Turtle, Screen

@@ -1,4 +1,11 @@
-from tkinter import *
+"""
+Program: TKinter widgets
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
+from tkinter import Tk, Label, Button, Entry, Text, Spinbox, Scale, \
+    IntVar, Listbox, END, Checkbutton, Radiobutton
 
 # Creating a new window and configurations
 window = Tk()
@@ -13,6 +20,7 @@ label.pack()
 
 # Buttons
 def action():
+    """action function"""
     print("Do something")
 
 
@@ -41,7 +49,7 @@ text.pack()
 
 # Spinbox
 def spinbox_used():
-    # gets the current value in spinbox.
+    """gets the current value in spinbox."""
     print(spinbox.get())
 
 
@@ -50,8 +58,8 @@ spinbox.pack()
 
 
 # Scale
-# Called with current scale value.
 def scale_used(value):
+    """Called with current scale value."""
     print(value)
 
 
@@ -61,7 +69,7 @@ scale.pack()
 
 # Checkbutton
 def checkbutton_used():
-    # Prints 1 if On button checked, otherwise 0.
+    """Prints 1 if On button checked, otherwise 0."""
     print(checked_state.get())
 
 
@@ -74,6 +82,7 @@ checkbutton.pack()
 
 # Radiobutton
 def radio_used():
+    """radio button"""
     print(radio_state.get())
 
 
@@ -87,7 +96,7 @@ radiobutton2.pack()
 
 # Listbox
 def listbox_used():
-    # Gets current selection from listbox
+    """Gets current selection from listbox"""
     print(listbox.get(listbox.curselection()))
 
 

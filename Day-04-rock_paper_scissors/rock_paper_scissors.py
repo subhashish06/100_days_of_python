@@ -1,6 +1,13 @@
-import sys
+"""
+Program: Rock Paper Scissors Game
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
 
-rock = '''
+import sys
+import random
+
+ROCK = '''
     _______
 ---'   ____)
       (_____)
@@ -9,7 +16,7 @@ rock = '''
 ---.__(___)
 '''
 
-paper = '''
+PAPER = '''
     _______
 ---'   ____)____
           ______)
@@ -18,7 +25,7 @@ paper = '''
 ---.__________)
 '''
 
-scissors = '''
+SCISSORS = '''
     _______
 ---'   ____)____
           ______)
@@ -26,45 +33,43 @@ scissors = '''
       (____)
 ---.__(___)
 '''
-import sys
+
 input_code = input("What do you choose? Type 0 for Rock, 1 for Paper and 2 for Scissors: ")
 
 if input_code == '0':
-    player_choice = rock
+    CHOICE = ROCK
 elif input_code == '1':
-    player_choice = paper
+    CHOICE = PAPER
 elif input_code == '2':
-    player_choice = scissors
+    CHOICE = SCISSORS
 else:
     print("You can't even choose! You lose!")
     sys.exit()
 
-import random
+computer_choice = random.choice([ROCK, PAPER, SCISSORS])
 
-computer_choice = random.choice([rock, paper, scissors])
-
-print(player_choice)
+print(CHOICE)
 print("Computer chose:")
 print(computer_choice)
 
-if player_choice == rock:
-    if computer_choice == rock:
+if CHOICE == ROCK:
+    if computer_choice == ROCK:
         print("You draw!")
-    elif computer_choice == paper:
+    elif computer_choice == PAPER:
         print("You lose!")
     else:
         print("You win!")
-elif player_choice == paper:
-    if computer_choice == rock:
+elif CHOICE == PAPER:
+    if computer_choice == ROCK:
         print("You win!")
-    elif computer_choice == paper:
+    elif computer_choice == PAPER:
         print("You draw!")
     else:
         print("You lose!")
 else:
-    if computer_choice == rock:
+    if computer_choice == ROCK:
         print("You lose!")
-    elif computer_choice == paper:
+    elif computer_choice == PAPER:
         print("You win!")
     else:
         print("You draw!")

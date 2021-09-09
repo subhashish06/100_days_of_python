@@ -1,12 +1,18 @@
+"""
+Program: Quiz Main Program
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
 from data import question_data
 from quiz_brain import QuizBrain, Question
 
 question_bank = []
 
 for question in question_data:
-    question_text = question['text']
-    question_answer = question['answer']
-    new_question = Question(question_text, question_answer)
+    QUESTION = question['text']
+    ANSWER = question['answer']
+    new_question = Question(QUESTION, ANSWER)
     question_bank.append(new_question)
 
 quiz = QuizBrain(question_bank)

@@ -1,3 +1,9 @@
+"""
+Program: Coffee machine (with functional programming)
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
+
 MENU = {
     "espresso": {
         "ingredients": {
@@ -28,12 +34,13 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
-money = 0
+MONEY = 0
 
 
 def get_user_choice():
     """prompts the user for their choice and returns the option chosen by the user"""
-    user_choice = input("What would you like? (espresso/latte/cappuccino) or information(rates/report): ").lower()
+    user_choice = input("What would you like? (espresso/latte/cappuccino)"
+                        " or information(rates/report): ").lower()
     return user_choice
 
 
@@ -42,7 +49,7 @@ def print_report():
     print(f"Water : {resources['water']}ml")
     print(f"Milk : {resources['milk']}ml")
     print(f"Coffee : {resources['coffee']}g")
-    print(f"Money : ${money}")
+    print(f"Money : ${MONEY}")
 
 
 def print_rates():
@@ -80,20 +87,24 @@ def validate_transaction(beverage, money_supplied):
     if money sufficient, add money to machine
     returns : True is money is sufficient and False if not
     """
-    global money
+    global MONEY
     if money_supplied > MENU[beverage]['cost']:
         print(f"Here is ${round(money_supplied - MENU[beverage]['cost'], 2)} in change.")
-        money += MENU[beverage]['cost']
+        MONEY += MENU[beverage]['cost']
         return True
-    elif money_supplied < MENU[beverage]['cost']:
+    if money_supplied < MENU[beverage]['cost']:
         print("Sorry that's not enough money. Money refunded.")
         return False
     else:
-        money += MENU[beverage]['cost']
+        MONEY += MENU[beverage]['cost']
         return True
 
 
 def make_coffee(beverage, material):
+    """
+    input : beverage and material
+    returns : None
+    """
     material['water'] -= MENU[beverage]['ingredients']['water']
     material['coffee'] -= MENU[beverage]['ingredients']['coffee']
     if beverage != 'espresso':
@@ -110,7 +121,7 @@ while True:
     elif chosen_option == 'report':
         print_report()
         continue
-    elif chosen_option == 'espresso' or chosen_option == 'latte' or chosen_option == 'cappuccino':
+    elif chosen_option in ('espresso', 'latte', 'cappuccino'):
         resource_shortage = check_resources_sufficient(chosen_option)
         if resource_shortage:
             print(resource_shortage)

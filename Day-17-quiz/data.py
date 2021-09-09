@@ -1,3 +1,10 @@
+"""
+Program: Quiz Data
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+# pylint: disable=line-too-long
+
 question_data = [
     {"text": "A slug's blood is green.", "answer": "True"},
     {"text": "The loudest animal is the African Elephant.", "answer": "False"},

@@ -1,5 +1,11 @@
+"""
+Program: Blackjack Game
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
+
 import random
-from blacjack_art import logo
+from blacjack_art import LOGO
 
 
 def deal_card():
@@ -25,13 +31,13 @@ for _ in range(2):
     player_cards.append(deal_card())
     computer_cards.append(deal_card())
 
-print(logo)
+print(LOGO)
 print(f"Your cards: {player_cards}")
 print(f"Computer's first card: {computer_cards[0]}")
 
-should_continue = True
+SHOULD_CONTINUE = True
 
-while should_continue:
+while SHOULD_CONTINUE:
     call = input("Type 'y' to get another card, type 'n' to pass: ")
     if call == 'n':
         print(f"Computer's hand: {computer_cards}")
@@ -50,10 +56,10 @@ while should_continue:
             print("Game drawn!")
         else:
             print("You lose!")
-        should_continue = False
+        SHOULD_CONTINUE = False
     else:
         player_cards.append(deal_card())
         print(f"Your new hand: {player_cards}")
         if score(player_cards) > 21:
             print("Busted! You lose!")
-            should_continue = False
+            SHOULD_CONTINUE = False

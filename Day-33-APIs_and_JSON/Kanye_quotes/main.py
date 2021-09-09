@@ -1,8 +1,15 @@
-from tkinter import *
+"""
+Program: Kanye Quotes
+Author: Subhashish Dhar
+Date: 04/09/2021
+"""
+
+from tkinter import Tk, Canvas, PhotoImage, Button
 import requests
 
 
 def get_quote():
+    """gets the quote"""
     response = requests.get(url="https://api.kanye.rest")
     response.raise_for_status()
     quote = response.json()["quote"]

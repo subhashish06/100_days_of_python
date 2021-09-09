@@ -1,3 +1,9 @@
+"""
+Program: Turtle Crossing Car Game
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
 from turtle import Screen
 from time import sleep
 from car import Car
@@ -15,8 +21,8 @@ screen.onkeypress(fun=player.move, key='Up')
 score = Score()
 cars = Car()
 
-is_game_over = False
-while not is_game_over:
+GAME_OVER = False
+while not GAME_OVER:
     sleep(0.1)
     screen.update()
     score.display_score()
@@ -25,7 +31,7 @@ while not is_game_over:
     # Detect collision with car
     for car in cars.all_cars:
         if car.distance(player) < 20:
-            is_game_over = True
+            GAME_OVER = True
             score.display_game_over()
     # Detect turtle crossing successfully
     if player.ycor() > 280:

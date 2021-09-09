@@ -1,4 +1,11 @@
-logo = '''
+"""
+Program: Auction Art
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
+# pylint: disable=anomalous-backslash-in-string
+
+LOGO = '''
                          ___________
                          \         /
                           )_______(

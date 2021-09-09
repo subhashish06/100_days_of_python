@@ -1,4 +1,12 @@
-logo = """
+"""
+Program: Higher Lower Game Art
+Author: Subhashish Dhar
+Date: 02/09/2021
+"""
+# pylint: disable=anomalous-backslash-in-string
+
+
+LOGO = """
     __  ___       __             
    / / / (_)___ _/ /_  ___  _____
   / /_/ / / __ `/ __ \/ _ \/ ___/
@@ -10,7 +18,7 @@ logo = """
 /_____/\____/|__/|__/\___/_/     
 """
 
-vs = """
+VS = """
  _    __    
 | |  / /____
 | | / / ___/

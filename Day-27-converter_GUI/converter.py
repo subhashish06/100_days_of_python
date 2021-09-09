@@ -1,8 +1,15 @@
-from tkinter import *
+"""
+Program: Converter GUI using TKinter
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
+from tkinter import Tk, Label, Entry, Button
 
 
 # Defining the button click action
 def convert_miles_to_km():
+    """converts miles to km"""
     distance_miles = miles_entry.get()
     distance_km = round(int(distance_miles)*1.6)
     result_label.config(text=distance_km)

@@ -1,3 +1,9 @@
+"""
+Program: Ping Pong Scorecard Module
+Author: Subhashish Dhar
+Date: 03/09/2021
+"""
+
 from turtle import Turtle
 
 ALIGNMENT = 'center'
@@ -5,6 +11,7 @@ FONT = ("Courier", 20, "bold")
 
 
 class Score(Turtle):
+    """creates the score object"""
     def __init__(self):
         super().__init__()
         self.score = 0
@@ -13,18 +20,22 @@ class Score(Turtle):
         self.penup()
 
     def display_score(self):
+        """displays the score"""
         self.clear()
         self.write(self.score, align=ALIGNMENT, font=FONT)
 
     def increase_score(self):
+        """increases the score"""
         self.score += 1
 
     def display_game_over(self):
+        """displays game over"""
         self.home()
-        self.write(f'GAME OVER', align=ALIGNMENT, font=FONT)
+        self.write('GAME OVER', align=ALIGNMENT, font=FONT)
 
 
 class Net(Turtle):
+    """the net object"""
     def __init__(self):
         super().__init__()
         self.color('white')
