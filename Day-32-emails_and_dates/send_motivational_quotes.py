@@ -1,12 +1,18 @@
-from smtplib import SMTP
+"""
+Program: Email Motivational Quotes
+Author: Subhashish Dhar
+Date: 04/09/2021
+"""
+
+import os
 from datetime import datetime
 from random import choice
-import os
+from smtplib import SMTP
 
 date = datetime.now()
 
-with open("quotes.txt") as f:
-    quotes = f.readlines()
+with open("quotes.txt", encoding="utf-8") as file_handler:
+    quotes = file_handler.readlines()
     quote_of_the_day = choice(quotes)
     print(quote_of_the_day)
 
