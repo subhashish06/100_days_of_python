@@ -10,11 +10,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
+    """prints hello world on webpage"""
     return 'Hello, World!'
 
 
 @app.route('/bye')
 def bye_world():
+    """prints bye world on webpage"""
     return 'Bye, World!'
 
 
