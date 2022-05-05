@@ -18,7 +18,7 @@ STORE = {
     "Shipment - 7,000": "buyShipment",
     "Alchemy lab - 50,000": "buyAlchemy lab",
     "Portal - 1,000,000": "buyPortal",
-    "Time machine - 123,456,789": "buyTime machine"
+    "Time machine - 123,456,789": "buyTime machine",
 }
 
 driver = webdriver.Chrome(executable_path=CHROME_DRIVER_PATH)

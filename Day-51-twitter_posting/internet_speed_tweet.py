@@ -38,14 +38,18 @@ class InternetSpeedTwitterBot:
         password.send_keys(Keys.ENTER)
         # Post the tweet
         self.driver.implicitly_wait(3)
-        tweet = self.driver.find_element_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div['
-                                                  '1]/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div['
-                                                  '1]/div/div/div/div/div/div/div/div/div/label/div['
-                                                  '1]/div/div/div/div/div[2]/div/div/div/div')
+        tweet = self.driver.find_element_by_xpath(
+            '//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div['
+            "1]/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div["
+            "1]/div/div/div/div/div/div/div/div/div/label/div["
+            "1]/div/div/div/div/div[2]/div/div/div/div"
+        )
         tweet.send_keys(tweet_text)
-        submit = self.driver.find_element_by_xpath('//*[@id="react-root"]/div/div/div['
-                                                   '2]/main/div/div/div/div/div/div[2]/div/div[2]/div['
-                                                   '1]/div/div/div/div[2]/div[3]/div/div/div[2]/div[3]/div/span/span')
+        submit = self.driver.find_element_by_xpath(
+            '//*[@id="react-root"]/div/div/div['
+            "2]/main/div/div/div/div/div/div[2]/div/div[2]/div["
+            "1]/div/div/div/div[2]/div[3]/div/div/div[2]/div[3]/div/span/span"
+        )
         submit.click()
 
     def get_internet_speed(self):
@@ -53,18 +57,26 @@ class InternetSpeedTwitterBot:
         self.driver.get(SPEED_TEST_URL)
         # Start the speed Test
         self.driver.implicitly_wait(5)
-        start_test = self.driver.find_element_by_xpath('//*[@id="container"]/div/div[3]/div/div/div/div[2]/div['
-                                                       '3]/div[1]/a/span[4]')
+        start_test = self.driver.find_element_by_xpath(
+            '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div['
+            "3]/div[1]/a/span[4]"
+        )
         start_test.click()
         # Wait for the test to finish
         time.sleep(45)
         # Get the speeds from the result
-        download = self.driver.find_element_by_xpath('//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div['
-                                                     '3]/div/div[3]/div/div/div[2]/div[1]/div[2]/div/div[2]/span')
-        upload = self.driver.find_element_by_xpath('//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div['
-                                                   '3]/div/div[3]/div/div/div[2]/div[1]/div[3]/div/div[2]/span')
-        provider = self.driver.find_element_by_xpath('//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div['
-                                                     '3]/div/div[3]/div/div/div[2]/div[3]/div/div/div[1]/div[3]/div[2]')
+        download = self.driver.find_element_by_xpath(
+            '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div['
+            "3]/div/div[3]/div/div/div[2]/div[1]/div[2]/div/div[2]/span"
+        )
+        upload = self.driver.find_element_by_xpath(
+            '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div['
+            "3]/div/div[3]/div/div/div[2]/div[1]/div[3]/div/div[2]/span"
+        )
+        provider = self.driver.find_element_by_xpath(
+            '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div['
+            "3]/div/div[3]/div/div/div[2]/div[3]/div/div/div[1]/div[3]/div[2]"
+        )
         text = f"I am using {provider.text} network.\nDownload Speed: {download.text}\nUpload Speed: {upload.text}"
         return text
 

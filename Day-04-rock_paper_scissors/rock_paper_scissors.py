@@ -7,40 +7,42 @@ Date: 02/09/2021
 import sys
 import random
 
-ROCK = '''
+ROCK = """
     _______
 ---'   ____)
       (_____)
       (_____)
       (____)
 ---.__(___)
-'''
+"""
 
-PAPER = '''
+PAPER = """
     _______
 ---'   ____)____
           ______)
           _______)
          _______)
 ---.__________)
-'''
+"""
 
-SCISSORS = '''
+SCISSORS = """
     _______
 ---'   ____)____
           ______)
        __________)
       (____)
 ---.__(___)
-'''
+"""
 
-input_code = input("What do you choose? Type 0 for Rock, 1 for Paper and 2 for Scissors: ")
+input_code = input(
+    "What do you choose? Type 0 for Rock, 1 for Paper and 2 for Scissors: "
+)
 
-if input_code == '0':
+if input_code == "0":
     CHOICE = ROCK
-elif input_code == '1':
+elif input_code == "1":
     CHOICE = PAPER
-elif input_code == '2':
+elif input_code == "2":
     CHOICE = SCISSORS
 else:
     print("You can't even choose! You lose!")

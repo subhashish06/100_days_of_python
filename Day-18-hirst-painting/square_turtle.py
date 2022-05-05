@@ -9,10 +9,10 @@ Date: 03/09/2021
 from turtle import Turtle, Screen
 
 my_screen = Screen()
-my_screen.bgcolor('cornsilk2')
+my_screen.bgcolor("cornsilk2")
 
 timmy = Turtle()
-timmy.color('cyan3')
+timmy.color("cyan3")
 
 for _ in range(4):
     timmy.forward(100)

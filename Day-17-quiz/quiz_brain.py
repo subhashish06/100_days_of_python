@@ -7,6 +7,7 @@ Date: 03/09/2021
 
 class Question:
     """takes a text and an answer : creates a question object."""
+
     def __init__(self, text, answer):
         self.text = text
         self.answer = answer
@@ -14,6 +15,7 @@ class Question:
 
 class QuizBrain:
     """takes a list of questions : creates a QuizBrain object."""
+
     def __init__(self, question_list):
         self.question_number = 0
         self.question_list = question_list

@@ -8,7 +8,10 @@ import os
 import requests
 
 PRICES_SHEET_URL = os.environ.get("SHEET_URL")
-USERS_SHEET_URL = "https://api.sheety.co/41c17aa0e46236e4225bd96218dacaae/flightDeals/users"
+USERS_SHEET_URL = (
+    "https://api.sheety.co/41c17aa0e46236e4225bd96218dacaae/flightDeals/users"
+)
+
 
 class DataManager:
     """This class is responsible for talking to the Google Sheet."""
@@ -40,18 +43,18 @@ class DataManager:
         more_email = True
         while more_email:
             user_choice = input("Do you want to add an user? (yes/no) : ")
-            if user_choice.lower() == 'no':
+            if user_choice.lower() == "no":
                 more_email = False
             else:
                 first_name = input("Enter your first name : ")
                 last_name = input("Enter your last name : ")
                 email = input("Enter your email address : ")
                 body = {
-                            "user": {
-                                "firstName": first_name,
-                                "lastName": last_name,
-                                "email":email
-                            }
-                        }
+                    "user": {
+                        "firstName": first_name,
+                        "lastName": last_name,
+                        "email": email,
+                    }
+                }
                 response = requests.post(url=USERS_SHEET_URL, json=body)
                 response.raise_for_status()

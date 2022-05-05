@@ -12,9 +12,10 @@ PACE = 10
 
 class Player(Turtle):
     """creates the player object"""
+
     def __init__(self):
         super().__init__()
-        self.shape('turtle')
+        self.shape("turtle")
         self.penup()
         self.reset_position()
         self.setheading(90)

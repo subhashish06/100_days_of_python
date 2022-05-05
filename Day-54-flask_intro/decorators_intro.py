@@ -9,6 +9,7 @@ import time
 
 def speed_calc_decorator(function):
     """decorator function to calculate code execution time"""
+
     def wrapper_function():
         print(f"Executing {function.__name__}")
         start_time = time.time()
@@ -16,6 +17,7 @@ def speed_calc_decorator(function):
         end_time = time.time()
         code_running_time = end_time - start_time
         print(f"This code took {code_running_time} to run.")
+
     return wrapper_function
 
 

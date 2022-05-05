@@ -17,11 +17,15 @@ while contestant_2 == contestant_1:
     contestant_2 = random.choice(DATA)
 
 print(LOGO)
-print(f"Compare A: {contestant_1['name']}, a {contestant_1['description']}, "
-      f"from {contestant_1['country']}")
+print(
+    f"Compare A: {contestant_1['name']}, a {contestant_1['description']}, "
+    f"from {contestant_1['country']}"
+)
 print(VS)
-print(f"Compare B: {contestant_2['name']}, a {contestant_2['description']}, "
-      f"from {contestant_2['country']}")
+print(
+    f"Compare B: {contestant_2['name']}, a {contestant_2['description']}, "
+    f"from {contestant_2['country']}"
+)
 user_choice = input("Who has more followers on Instagram? Type 'A' or 'B': ").upper()
 
 
@@ -30,10 +34,10 @@ def check_answer(contestant_a, contestant_b, choice):
     input : the two contestants and the user answer
     output : return True is user_choice is correct otherwise False
     """
-    if contestant_a['follower_count'] > contestant_b['follower_count']:
-        answer = 'A'
+    if contestant_a["follower_count"] > contestant_b["follower_count"]:
+        answer = "A"
     else:
-        answer = 'B'
+        answer = "B"
     return choice == answer
 
 
@@ -53,11 +57,17 @@ while check_answer(contestant_1, contestant_2, user_choice):
     print(f"That's right. Your score is {SCORE}")
     contestant_1, contestant_2 = get_contestants_for_next_round(contestant_2)
     print(LOGO)
-    print(f"Compare A: {contestant_1['name']}, a {contestant_1['description']}, "
-          f"from {contestant_1['country']}")
+    print(
+        f"Compare A: {contestant_1['name']}, a {contestant_1['description']}, "
+        f"from {contestant_1['country']}"
+    )
     print(VS)
-    print(f"Compare B: {contestant_2['name']}, a {contestant_2['description']}, "
-          f"from {contestant_2['country']}")
-    user_choice = input("Who has more followers on Instagram? Type 'A' or 'B': ").upper()
+    print(
+        f"Compare B: {contestant_2['name']}, a {contestant_2['description']}, "
+        f"from {contestant_2['country']}"
+    )
+    user_choice = input(
+        "Who has more followers on Instagram? Type 'A' or 'B': "
+    ).upper()
 
 print(f"Sorry. that's wrong. Final score: {SCORE}")

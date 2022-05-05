@@ -16,7 +16,7 @@ screen.listen()
 screen.tracer(0)
 
 player = Player()
-screen.onkeypress(fun=player.move, key='Up')
+screen.onkeypress(fun=player.move, key="Up")
 
 score = Score()
 cars = Car()

@@ -17,7 +17,7 @@ LIVES = 6
 print(LOGO)
 
 # Testing code
-print(f'Pssst, the solution is {CHOSEN_WORD}.')
+print(f"Pssst, the solution is {CHOSEN_WORD}.")
 
 # Create blanks
 display = []

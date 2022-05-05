@@ -13,16 +13,19 @@ my_coffee_maker = CoffeeMaker()
 my_money = MoneyMachine()
 
 while True:
-    user_option = input(f"What would you like? ({my_menu.get_items()}) or report?: ").lower()
-    if user_option == 'off':
+    user_option = input(
+        f"What would you like? ({my_menu.get_items()}) or report?: "
+    ).lower()
+    if user_option == "off":
         print("Machine powering off...")
         break
-    if user_option == 'report':
+    if user_option == "report":
         my_coffee_maker.report()
         my_money.report()
     else:
         chosen_beverage = my_menu.find_drink(user_option)
         if chosen_beverage:
-            if my_coffee_maker.is_resource_sufficient(chosen_beverage) \
-                    and my_money.make_payment(chosen_beverage.cost):
+            if my_coffee_maker.is_resource_sufficient(
+                chosen_beverage
+            ) and my_money.make_payment(chosen_beverage.cost):
                 my_coffee_maker.make_coffee(chosen_beverage)

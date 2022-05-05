@@ -40,16 +40,24 @@ name1 = input("What is your name? \n")
 name2 = input("What is their name? \n")
 
 combined_name = (name1 + name2).lower()
-first_digit = combined_name.count('t') + combined_name.count('r') \
-              + combined_name.count('u') + combined_name.count('e')
-second_digit = combined_name.count('l') + combined_name.count('o') + \
-               combined_name.count('v') + combined_name.count('e')
+first_digit = (
+    combined_name.count("t")
+    + combined_name.count("r")
+    + combined_name.count("u")
+    + combined_name.count("e")
+)
+second_digit = (
+    combined_name.count("l")
+    + combined_name.count("o")
+    + combined_name.count("v")
+    + combined_name.count("e")
+)
 
 LOVE_VALUE = int(str(first_digit) + str(second_digit))
 
 if LOVE_VALUE < 10 or LOVE_VALUE > 90:
-    print(f'Your score is {LOVE_VALUE}, you go together like coke and mentos.')
+    print(f"Your score is {LOVE_VALUE}, you go together like coke and mentos.")
 elif 40 < LOVE_VALUE < 50:
-    print(f'Your score is {LOVE_VALUE}, you are alright together.')
+    print(f"Your score is {LOVE_VALUE}, you are alright together.")
 else:
-    print(f'Your score is {LOVE_VALUE}.')
+    print(f"Your score is {LOVE_VALUE}.")

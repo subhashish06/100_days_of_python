@@ -17,7 +17,7 @@ STOCK_URL = "https://www.alphavantage.co/query"
 stock_parameters = {
     "function": "GLOBAL_QUOTE",
     "symbol": STOCK,
-    "apikey": stock_api_key
+    "apikey": stock_api_key,
 }
 
 stock_response = requests.get(url=STOCK_URL, params=stock_parameters)
@@ -31,11 +31,7 @@ print(stock_price)
 # Get the News
 news_api_key = os.environ.get("NEWS_AUTH_TOKEN")
 NEWS_URL = "https://newsapi.org/v2/everything"
-parameters = {
-    "apiKey": news_api_key,
-    "qInTitle": COMPANY_NAME,
-    "sortBy": "relevancy"
-}
+parameters = {"apiKey": news_api_key, "qInTitle": COMPANY_NAME, "sortBy": "relevancy"}
 
 news_response = requests.get(NEWS_URL, params=parameters)
 news_response.raise_for_status()
@@ -46,21 +42,25 @@ news_description = news_collection["articles"][0]["description"]
 print(news_description)
 
 # Send SMS
-SID = 'AC563da7de98225d587e5aea9ab11b275d'
+SID = "AC563da7de98225d587e5aea9ab11b275d"
 twilio_api_key = os.environ.get("TWILIO_AUTH_TOKEN")
 
 if float(stock_movement) > 0:
-    message_text = f'{STOCK}: {stock_price} 🔺{stock_movement}%\n\n' \
-                   f'Headline : {news_title}\n\nBrief : {news_description}'
+    message_text = (
+        f"{STOCK}: {stock_price} 🔺{stock_movement}%\n\n"
+        f"Headline : {news_title}\n\nBrief : {news_description}"
+    )
 else:
-    message_text = f'{STOCK}: {stock_price} 🔻{stock_movement}%\n\n' \
-                   f'Headline : {news_title}\n\nBrief : {news_description}'
+    message_text = (
+        f"{STOCK}: {stock_price} 🔻{stock_movement}%\n\n"
+        f"Headline : {news_title}\n\nBrief : {news_description}"
+    )
 
 client = Client(SID, twilio_api_key)
 message = client.messages.create(
-    messaging_service_sid='MG3db36b400f9d11a13e0c50d9c110e45f',
+    messaging_service_sid="MG3db36b400f9d11a13e0c50d9c110e45f",
     body=message_text,
-    to='+919739983563'
-    )
+    to="+919739983563",
+)
 
 print(message.sid)

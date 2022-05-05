@@ -14,25 +14,37 @@ driver.get(WEB_URL)
 
 # Navigate to the login page
 try:
-    login = driver.find_element_by_xpath('//*[@id="s-2061886532"]/div/div[1]/div/main/div[1]/div/div/div/div/header/div/div[2]/div[2]/a/span')
+    login = driver.find_element_by_xpath(
+        '//*[@id="s-2061886532"]/div/div[1]/div/main/div[1]/div/div/div/div/header/div/div[2]/div[2]/a/span'
+    )
     login.click()
 except:
-    dismiss = driver.find_element_by_xpath('//*[@id="s192874960"]/div/div/div[2]/button/svg')
+    dismiss = driver.find_element_by_xpath(
+        '//*[@id="s192874960"]/div/div/div[2]/button/svg'
+    )
     dismiss.click()
-    login = driver.find_element_by_xpath('//*[@id="s-2061886532"]/div/div[1]/div/main/div[1]/div/div/div/div/header/div/div[2]/div[2]/a/span')
+    login = driver.find_element_by_xpath(
+        '//*[@id="s-2061886532"]/div/div[1]/div/main/div[1]/div/div/div/div/header/div/div[2]/div[2]/a/span'
+    )
     login.click()
 finally:
     driver.implicitly_wait(3)
 
 # Choose login with Facebook
 try:
-    login_with_facebook = driver.find_element_by_xpath('//*[@id="s192874960"]/div/div/div[1]/div/div[3]/span/div[2]/button')
+    login_with_facebook = driver.find_element_by_xpath(
+        '//*[@id="s192874960"]/div/div/div[1]/div/div[3]/span/div[2]/button'
+    )
     login_with_facebook.click()
 except:
-    more_options = driver.find_element_by_xpath('//*[@id="s192874960"]/div/div/div[1]/div/div[3]/span/div[2]/button')
+    more_options = driver.find_element_by_xpath(
+        '//*[@id="s192874960"]/div/div/div[1]/div/div[3]/span/div[2]/button'
+    )
     more_options.click()
     driver.implicitly_wait(2)
-    login_with_facebook = driver.find_element_by_xpath('//*[@id="s192874960"]/div/div/div[1]/div/div[3]/span/div[2]/button')
+    login_with_facebook = driver.find_element_by_xpath(
+        '//*[@id="s192874960"]/div/div/div[1]/div/div[3]/span/div[2]/button'
+    )
     login_with_facebook.click()
 finally:
     driver.implicitly_wait(5)

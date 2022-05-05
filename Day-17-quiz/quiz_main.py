@@ -10,8 +10,8 @@ from quiz_brain import QuizBrain, Question
 question_bank = []
 
 for question in question_data:
-    QUESTION = question['text']
-    ANSWER = question['answer']
+    QUESTION = question["text"]
+    ANSWER = question["answer"]
     new_question = Question(QUESTION, ANSWER)
     question_bank.append(new_question)
 

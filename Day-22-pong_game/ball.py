@@ -9,10 +9,11 @@ from turtle import Turtle
 
 class Ball(Turtle):
     """creates the ball object"""
+
     def __init__(self):
         super().__init__()
-        self.color('white')
-        self.shape('circle')
+        self.color("white")
+        self.shape("circle")
         self.penup()
         self.setheading(220)
         self.is_moving = True

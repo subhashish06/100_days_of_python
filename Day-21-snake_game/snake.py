@@ -16,6 +16,7 @@ DOWN = 270
 
 class Snake:
     """The Snake Class"""
+
     def __init__(self):
         self.snake_segments = []
         self.create_snake()
@@ -32,8 +33,8 @@ class Snake:
 
     def add_segment(self, position):
         """adds segments to the snake"""
-        snake = Turtle(shape='square')
-        snake.color('white')
+        snake = Turtle(shape="square")
+        snake.color("white")
         snake.penup()
         snake.goto(position)
         self.snake_segments.append(snake)
