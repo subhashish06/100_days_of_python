@@ -12,8 +12,8 @@ from scoreboard import Score, Net
 
 screen = Screen()
 screen.setup(width=800, height=600)
-screen.bgcolor('black')
-screen.title('Classic Pong')
+screen.bgcolor("black")
+screen.title("Classic Pong")
 screen.tracer(0)
 
 right_paddle = Paddle(x_cor=350, y_cor=0)
@@ -26,10 +26,10 @@ right_score.goto(100, 250)
 net = Net()
 
 screen.listen()
-screen.onkeypress(fun=right_paddle.move_up, key='Up')
-screen.onkeypress(fun=right_paddle.move_down, key='Down')
-screen.onkeypress(fun=left_paddle.move_up, key='w')
-screen.onkeypress(fun=left_paddle.move_down, key='s')
+screen.onkeypress(fun=right_paddle.move_up, key="Up")
+screen.onkeypress(fun=right_paddle.move_down, key="Down")
+screen.onkeypress(fun=left_paddle.move_up, key="w")
+screen.onkeypress(fun=left_paddle.move_down, key="s")
 
 GAME_OVER = False
 while not GAME_OVER:
@@ -42,8 +42,9 @@ while not GAME_OVER:
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_off_wall()
     # Detect ball hitting the paddle.
-    if (ball.distance(right_paddle) < 50 and ball.xcor() > 340) \
-            or (ball.distance(left_paddle) < 50 and ball.xcor() < -340):
+    if (ball.distance(right_paddle) < 50 and ball.xcor() > 340) or (
+        ball.distance(left_paddle) < 50 and ball.xcor() < -340
+    ):
         ball.bounce_off_paddle()
         ball.speed_up()
     # Detect ball missing the right paddle.

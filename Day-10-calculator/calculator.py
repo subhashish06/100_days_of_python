@@ -27,12 +27,7 @@ def divide(num_1, num_2):
     return num_1 / num_2
 
 
-operations = {
-                 '+': add,
-                 '-': subtract,
-                 '*': multiply,
-                 '/': divide
-             }
+operations = {"+": add, "-": subtract, "*": multiply, "/": divide}
 
 print(LOGO)
 num1 = float(input("What's the first number?: "))
@@ -49,7 +44,9 @@ while TO_CONTINUE:
     calculation = operations[operation]
     answer = calculation(num1, num2)
     print(f"{num1} {operation} {num2} = {answer}")
-    choice = input(f"Type 'y' to continue calculating with {answer}, or type 'n' to exit: ")
-    if choice == 'n':
+    choice = input(
+        f"Type 'y' to continue calculating with {answer}, or type 'n' to exit: "
+    )
+    if choice == "n":
         TO_CONTINUE = False
     num1 = answer

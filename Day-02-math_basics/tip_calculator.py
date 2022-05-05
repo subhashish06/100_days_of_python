@@ -8,13 +8,13 @@ https://www.google.com/search?q=how+to+round+number+to+2+decimal+places+python&o
 https://www.kite.com/python/answers/how-to-limit-a-float-to-two-decimal-places-in-python
 """
 
-print('Welcome to the tip calculator.')
-bill = float(input('What was the total bill? $'))
-tip = int(input('What percentage tip would you like to give? 10, 12 or 15? '))
-ppl = int(input('How many people to split the bill? '))
+print("Welcome to the tip calculator.")
+bill = float(input("What was the total bill? $"))
+tip = int(input("What percentage tip would you like to give? 10, 12 or 15? "))
+ppl = int(input("How many people to split the bill? "))
 
-share = bill/ppl * (1 + tip/100)
-SHARE = '{:0.2f}'.format(share)
+share = bill / ppl * (1 + tip / 100)
+SHARE = "{:0.2f}".format(share)
 
-print('+'*20 + ' Calculating ' + '+'*20)
-print(f'Each person should pay: ${SHARE}')
+print("+" * 20 + " Calculating " + "+" * 20)
+print(f"Each person should pay: ${SHARE}")

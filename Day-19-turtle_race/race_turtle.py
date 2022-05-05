@@ -10,15 +10,16 @@ from random import randint
 screen = Screen()
 screen.setup(width=800, height=400)
 GAME_ON = False
-user_bet = screen.textinput(title='Enter your bet',
-                            prompt='Which turtle will win the race? '
-                                   'red/green/blue/gray/pink/purple : ')
-colors = ['red', 'green', 'blue', 'gray', 'pink', 'purple']
+user_bet = screen.textinput(
+    title="Enter your bet",
+    prompt="Which turtle will win the race? " "red/green/blue/gray/pink/purple : ",
+)
+colors = ["red", "green", "blue", "gray", "pink", "purple"]
 all_turtles = []
 
 Y_AXIS = -150
 for color in colors:
-    new_turtle = Turtle(shape='turtle')
+    new_turtle = Turtle(shape="turtle")
     new_turtle.penup()
     new_turtle.color(color)
     new_turtle.goto(-390, Y_AXIS)

@@ -22,9 +22,9 @@ with SMTP("smtp.gmail.com") as mail:
     mail.starttls()
     mail.login(user="subbu.pybot@gmail.com", password=PASSWORD)
     mail.sendmail(
-                from_addr="subbu.pybot@gmail.com",
-                to_addrs=["subhashish06@gmail.com"],
-                msg=f"Subject:Monday Motivation\n\n"
-                    f"Hi,\n\nQuote of the Day:\n{quote_of_the_day}\n\nStay Motivated!\n\n"
-                    f"Regards,\nSubhashish"
-                )
+        from_addr="subbu.pybot@gmail.com",
+        to_addrs=["subhashish06@gmail.com"],
+        msg=f"Subject:Monday Motivation\n\n"
+        f"Hi,\n\nQuote of the Day:\n{quote_of_the_day}\n\nStay Motivated!\n\n"
+        f"Regards,\nSubhashish",
+    )

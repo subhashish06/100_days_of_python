@@ -57,7 +57,7 @@ def post_pixel(graph_id, date):
     header = {"X-USER-TOKEN": TOKEN}
     pixel_data = {
         "date": date,
-        "quantity": input("How many cigarettes smoked today?" ),
+        "quantity": input("How many cigarettes smoked today?"),
     }
 
     response = requests.post(url, headers=header, json=pixel_data)

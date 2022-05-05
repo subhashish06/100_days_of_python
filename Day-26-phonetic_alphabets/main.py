@@ -17,7 +17,7 @@ def generate_phonetic():
     try:
         user_word_code = [code_dict[letter] for letter in user_word]
     except KeyError:
-        print('Please use only letters!')
+        print("Please use only letters!")
         generate_phonetic()
     else:
         print(user_word_code)

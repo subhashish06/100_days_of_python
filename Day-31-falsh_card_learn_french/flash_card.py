@@ -12,10 +12,10 @@ BACKGROUND_COLOR = "#B1DDC6"
 
 try:
     data_df = pd.read_csv("./data/words_to_learn.csv")
-    DATA = data_df.to_dict(orient='records')
+    DATA = data_df.to_dict(orient="records")
 except FileNotFoundError:
     data_df = pd.read_csv("./data/french_words.csv")
-    DATA = data_df.to_dict(orient='records')
+    DATA = data_df.to_dict(orient="records")
 finally:
     WORDS_COUNT = 100
 
@@ -24,8 +24,8 @@ finally:
 def flip_card():
     """flips the card"""
     canvas.itemconfig(image, image=back_image)
-    canvas.itemconfig(language, text='English', fill='white')
-    canvas.itemconfig(word, text=CHOSEN_WORD['English'], fill='white')
+    canvas.itemconfig(language, text="English", fill="white")
+    canvas.itemconfig(word, text=CHOSEN_WORD["English"], fill="white")
 
 
 # ---------------------------- REMOVE CARD ------------------------------- #
@@ -46,8 +46,8 @@ def draw_new_card():
     INDEX = randint(0, WORDS_COUNT)
     canvas.itemconfig(image, image=front_image)
     CHOSEN_WORD = DATA[INDEX]
-    canvas.itemconfig(language, text='French', fill='black')
-    canvas.itemconfig(word, text=CHOSEN_WORD['French'], fill='black')
+    canvas.itemconfig(language, text="French", fill="black")
+    canvas.itemconfig(word, text=CHOSEN_WORD["French"], fill="black")
     FLIP_TIMER = window.after(3000, flip_card)
 
 
@@ -74,16 +74,20 @@ cross_image = PhotoImage(file="./images/wrong.png")
 # Create the main canvas
 canvas = Canvas(width=800, height=526, bg=BACKGROUND_COLOR, highlightthickness=0)
 image = canvas.create_image(400, 263, image=front_image)
-language = canvas.create_text(400, 150, text='French', font=("Ariel", 40, "italic"))
+language = canvas.create_text(400, 150, text="French", font=("Ariel", 40, "italic"))
 INDEX = randint(0, 100)
 CHOSEN_WORD = DATA[INDEX]
-word = canvas.create_text(400, 263, text=CHOSEN_WORD['French'], font=("Ariel", 60, "bold"))
+word = canvas.create_text(
+    400, 263, text=CHOSEN_WORD["French"], font=("Ariel", 60, "bold")
+)
 canvas.grid(row=0, column=0, columnspan=2)
 
 # Create the buttons
 correct_button = Button(image=tick_image, highlightthickness=0, command=tick_pressed)
 correct_button.grid(row=1, column=0)
-incorrect_button = Button(image=cross_image, highlightthickness=0, command=draw_new_card)
+incorrect_button = Button(
+    image=cross_image, highlightthickness=0, command=draw_new_card
+)
 incorrect_button.grid(row=1, column=1)
 
 window.mainloop()

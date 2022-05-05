@@ -26,26 +26,26 @@ add_pepperoni = input("Do you want pepperoni? Y or N ")
 extra_cheese = input("Do you want extra cheese? Y or N ")
 
 BILL = 0
-if size == 'S':
+if size == "S":
     BILL += 15
     print("Adding $15 for small pizza")
-    if add_pepperoni == 'Y':
+    if add_pepperoni == "Y":
         BILL += 2
         print("Adding $2 for pepperoni")
-elif size == 'M':
+elif size == "M":
     BILL += 20
     print("Adding $20 for medium pizza")
-    if add_pepperoni == 'Y':
+    if add_pepperoni == "Y":
         BILL += 3
         print("Adding $3 for pepperoni")
 else:
     BILL += 25
     print("Adding $25 for large pizza")
-    if add_pepperoni == 'Y':
+    if add_pepperoni == "Y":
         BILL += 3
         print("Adding $3 for pepperoni")
 
-if extra_cheese == 'Y':
+if extra_cheese == "Y":
     BILL += 1
     print("Adding $1 for extra cheese")
 

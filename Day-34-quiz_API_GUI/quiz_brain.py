@@ -9,6 +9,7 @@ import html
 
 class QuizBrain:
     """creates the quizbrain object from the questions list"""
+
     def __init__(self, q_list):
         self.question_number = 0
         self.score = 0

@@ -10,7 +10,7 @@ from color_picker import get_random_color
 screen = Screen()
 screen.colormode(255)
 timmy = Turtle()
-timmy.speed('fastest')
+timmy.speed("fastest")
 timmy.hideturtle()
 
 for _ in range(72):

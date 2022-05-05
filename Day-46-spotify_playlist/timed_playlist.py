@@ -23,7 +23,7 @@ sp = spotipy.Spotify(
         client_id=CLIENT_ID,
         client_secret=CLIENT_SECRET,
         show_dialog=True,
-        cache_path="token.txt"
+        cache_path="token.txt",
     )
 )
 
@@ -37,9 +37,11 @@ songs_list = []
 if response.status_code != 200:
     print("Can't find the webpage. Is the date format OK?")
 else:
-    soup = BeautifulSoup(response.text, features='lxml')
-    songs_list = [song.get_text() for song in
-                  soup.find_all(class_="chart-element__information__song")]
+    soup = BeautifulSoup(response.text, features="lxml")
+    songs_list = [
+        song.get_text()
+        for song in soup.find_all(class_="chart-element__information__song")
+    ]
 
 # Create the list of song URIs
 song_uris = []
@@ -54,5 +56,7 @@ for song in songs_list:
 
 # Create the playlist
 user_id = sp.current_user()["id"]
-playlist = sp.user_playlist_create(user=user_id, name=f"{date} Billboard 100", public=False)
+playlist = sp.user_playlist_create(
+    user=user_id, name=f"{date} Billboard 100", public=False
+)
 sp.playlist_add_items(playlist_id=playlist["id"], items=song_uris)

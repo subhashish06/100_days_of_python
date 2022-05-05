@@ -20,7 +20,7 @@ Date: 03/09/2021
 
 import pandas as pd
 
-data = pd.read_csv('weather_data.csv')
+data = pd.read_csv("weather_data.csv")
 # print(data)
 # print(data['temp'])
 # data_list = data['temp'].to_list()
@@ -33,5 +33,5 @@ data = pd.read_csv('weather_data.csv')
 # data_dict = data.to_dict()
 # print(data_dict)
 # print(data[data.condition == 'Sunny'].day)
-sunny_days = data[data.condition == 'Sunny'].day.to_list()
+sunny_days = data[data.condition == "Sunny"].day.to_list()
 print(sunny_days)

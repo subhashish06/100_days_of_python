@@ -8,8 +8,10 @@ import os
 from selenium import webdriver
 
 CHROME_DRIVER_PATH = "C:\\Development\\chromedriver"
-WEB_URL = "https://www.linkedin.com/jobs/search/?currentJobId=2722247480&f_AL=true&f_E=4&geoId=109710172&keywords" \
-          "=network%20security&location=Bengaluru%2C%20Karnataka%2C%20India "
+WEB_URL = (
+    "https://www.linkedin.com/jobs/search/?currentJobId=2722247480&f_AL=true&f_E=4&geoId=109710172&keywords"
+    "=network%20security&location=Bengaluru%2C%20Karnataka%2C%20India "
+)
 
 LINKEDIN_USERNAME = "subhashish06@gmail.com"
 LINKEDIN_PASSWORD = os.environ.get("LINKEDIN_PASSWORD")
@@ -32,7 +34,9 @@ sign_in.click()
 driver.implicitly_wait(3)
 
 # Find the top job and click easy apply
-top_job = driver.find_element_by_class_name("jobs-search-two-pane__job-card-container--viewport-tracking-2")
+top_job = driver.find_element_by_class_name(
+    "jobs-search-two-pane__job-card-container--viewport-tracking-2"
+)
 top_job.click()
 driver.implicitly_wait(2)
 save = driver.find_element_by_class_name("jobs-save-button")

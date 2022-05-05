@@ -27,7 +27,7 @@ MENU = {
             "coffee": 24,
         },
         "cost": 3.0,
-    }
+    },
 }
 resources = {
     "water": 300,
@@ -39,8 +39,10 @@ MONEY = 0
 
 def get_user_choice():
     """prompts the user for their choice and returns the option chosen by the user"""
-    user_choice = input("What would you like? (espresso/latte/cappuccino)"
-                        " or information(rates/report): ").lower()
+    user_choice = input(
+        "What would you like? (espresso/latte/cappuccino)"
+        " or information(rates/report): "
+    ).lower()
     return user_choice
 
 
@@ -61,12 +63,12 @@ def print_rates():
 
 def check_resources_sufficient(beverage):
     """takes in a beverage and returns a warning message if any resource is not sufficient for it"""
-    if resources['water'] < MENU[beverage]['ingredients']['water']:
+    if resources["water"] < MENU[beverage]["ingredients"]["water"]:
         return "Sorry there is not enough water."
-    if resources['coffee'] < MENU[beverage]['ingredients']['coffee']:
+    if resources["coffee"] < MENU[beverage]["ingredients"]["coffee"]:
         return "Sorry there is not enough coffee."
-    if beverage != 'espresso':
-        if resources['milk'] < MENU[beverage]['ingredients']['milk']:
+    if beverage != "espresso":
+        if resources["milk"] < MENU[beverage]["ingredients"]["milk"]:
             return "Sorry there is not enough milk."
     return 0
 
@@ -88,15 +90,17 @@ def validate_transaction(beverage, money_supplied):
     returns : True is money is sufficient and False if not
     """
     global MONEY
-    if money_supplied > MENU[beverage]['cost']:
-        print(f"Here is ${round(money_supplied - MENU[beverage]['cost'], 2)} in change.")
-        MONEY += MENU[beverage]['cost']
+    if money_supplied > MENU[beverage]["cost"]:
+        print(
+            f"Here is ${round(money_supplied - MENU[beverage]['cost'], 2)} in change."
+        )
+        MONEY += MENU[beverage]["cost"]
         return True
-    if money_supplied < MENU[beverage]['cost']:
+    if money_supplied < MENU[beverage]["cost"]:
         print("Sorry that's not enough money. Money refunded.")
         return False
     else:
-        MONEY += MENU[beverage]['cost']
+        MONEY += MENU[beverage]["cost"]
         return True
 
 
@@ -105,28 +109,28 @@ def make_coffee(beverage, material):
     input : beverage and material
     returns : None
     """
-    material['water'] -= MENU[beverage]['ingredients']['water']
-    material['coffee'] -= MENU[beverage]['ingredients']['coffee']
-    if beverage != 'espresso':
-        material['milk'] -= MENU[beverage]['ingredients']['milk']
+    material["water"] -= MENU[beverage]["ingredients"]["water"]
+    material["coffee"] -= MENU[beverage]["ingredients"]["coffee"]
+    if beverage != "espresso":
+        material["milk"] -= MENU[beverage]["ingredients"]["milk"]
     print(f"Here is your {beverage} ☕. Enjoy!")
 
 
 while True:
     chosen_option = get_user_choice().lower()
 
-    if chosen_option == 'rates':
+    if chosen_option == "rates":
         print_rates()
         continue
-    elif chosen_option == 'report':
+    elif chosen_option == "report":
         print_report()
         continue
-    elif chosen_option in ('espresso', 'latte', 'cappuccino'):
+    elif chosen_option in ("espresso", "latte", "cappuccino"):
         resource_shortage = check_resources_sufficient(chosen_option)
         if resource_shortage:
             print(resource_shortage)
             continue
-    elif chosen_option == 'off':
+    elif chosen_option == "off":
         print("Machine powering off!")
         break
     else:
