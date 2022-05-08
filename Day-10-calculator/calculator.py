@@ -13,7 +13,7 @@ def add(num_1, num_2):
 
 
 def subtract(num_1, num_2):
-    "Subtract n2 from n1 and return difference"
+    """Subtract n2 from n1 and return difference"""
     return num_1 - num_2
 
 

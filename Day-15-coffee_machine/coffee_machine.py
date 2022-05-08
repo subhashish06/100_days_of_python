@@ -96,7 +96,7 @@ def validate_transaction(beverage, money_supplied):
         )
         MONEY += MENU[beverage]["cost"]
         return True
-    if money_supplied < MENU[beverage]["cost"]:
+    elif money_supplied < MENU[beverage]["cost"]:
         print("Sorry that's not enough money. Money refunded.")
         return False
     else:
