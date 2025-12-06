@@ -20,7 +20,7 @@ class Car:
 
     def create_car(self):
         """creates the car on screen"""
-        chance = randint(1, 6)
+        chance = randint(1, 12)
         if chance == 6:
             new_car = Turtle("square")
             new_car.shapesize(stretch_wid=1, stretch_len=2)
